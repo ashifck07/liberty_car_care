@@ -13,3 +13,6 @@ body {
   font-family: "poppins";
   font-size: 14px;
 }
+::-webkit-scrollbar {
+  display: none;
+}

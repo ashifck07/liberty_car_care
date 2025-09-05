@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import logo from '../../assets/logo.png'
-import search_icon from '../../assets/search_icon.svg'
 import bell_icon from '../../assets/bell_icon.svg'
 import profile_icon from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
+import MovieSearch from '../search/MovieSearch' 
 
 const Navbar = () => {
   const navRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +22,14 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSearchIconClick = () => {
+    setShowSearch(!showSearch);
+  };
  
   return (
     <div 
-      className={`w-full px-6 py-5 flex justify-between items-center fixed top-0 text-sm text-gray-200 z-10 transition-all duration-300 max-md:px-4 ${
+      className={`w-full px-6 py-5 flex justify-between items-center fixed top-0 text-sm text-gray-200 z-50 transition-all duration-300 max-md:px-4 ${
         isScrolled 
           ? 'bg-[#141414]' 
           : 'bg-gradient-to-b from-black/70 to-transparent'
@@ -43,9 +48,14 @@ const Navbar = () => {
         </ul>
       </div>
       
-      <div className="flex gap-5 items-center max-sm:gap-2">
-        <img src={search_icon} alt="" className='w-5 cursor-pointer hover:opacity-80 transition-opacity'/>
-        <p className='hover:text-white transition-colors cursor-pointer'>Children</p>
+      <div className="flex gap-5 items-center max-sm:gap-2 relative">
+        {/* Movie Search Component */}
+        <MovieSearch 
+          showSearch={showSearch} 
+          onSearchToggle={handleSearchIconClick}
+        />
+        
+        <p className='hover:text-white transition-colors cursor-pointer max-sm:hidden'>Children</p>
         <img src={bell_icon} alt="" className='w-5 cursor-pointer hover:opacity-80 transition-opacity'/>
         
         <div className="flex items-center gap-2 relative group">

@@ -46,10 +46,10 @@ const Home = () => {
         </div>
       </div>
       <div className="pl-6 max-md:pl-4">
-        <TitleCards title={"Blockbuster Movies"} cateogry={"top_rated"} />
-        <TitleCards title={"Only on Neftlix"} cateogry={"popular"} />
-        <TitleCards title={"Upcoming"} cateogry={"upcoming"} />
-        <TitleCards title={"Top Pics for You"} cateogry={"now_playing"} />
+        <TitleCards title={"Trending Now"} category={"popular"} />
+        <TitleCards title={"Critics' Choice"} category={"top_rated"} />
+        <TitleCards title={"Coming Soon"} category={"upcoming"} />
+        <TitleCards title={"Now Playing"} category={"now_playing"}  />
       </div>
       <Footer />
     </div>
@@ -57,3 +57,11 @@ const Home = () => {
 }
 
 export default Home
+
+
+
+
+
+
+
+
